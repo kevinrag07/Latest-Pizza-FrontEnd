@@ -1,0 +1,39 @@
+-> Create directory structure
+-> Create a NPM project and INSTALL all dependencies
+    -- Dependencies
+        - express
+        - ejs express-ejs-layouts
+    -- Dev dependencies
+        - nodemon
+-> Create express server - Create a server.js file
+-> Git setup and first commit
+-> Install laravel Mix
+    -- setup js and css
+-> Install tailwind Css
+-> Create Home page using Html and Css
+-> Create Cart page
+    -- oreder summary sesction
+    -- empty cart section
+-> Create Order controller and link it in server.js
+-> Create Order views with table for customer and admin
+-> Create Order single page with status
+-> Create login page with route
+-> Create register page with route
+-> Build register crud
+    -- dependancies express-flash express-session cookie-parser dotenv
+    -- status code article https://www.restapitutorial.com/httpstatuscodes.html
+    -- Database connection. dependancies mongoose
+-> Build login using passport 
+    -- install dependancies passport passport-local-express-session.
+-> Create menu model and put dummy Data
+-> Fetch all pizzas from db and show on home page 
+-> Add to cart functionality
+    -- use connect-mongo for session store
+    -- axios to send ajax request
+    -- install notification Library npm 1 noty https://ned.im/noty/#/
+-> Make order on carts page
+-> Place order functionality
+-> Order tracker
+    -- dependancies moment
+-> Socket connection
+    -- dependancies socket.io

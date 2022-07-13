@@ -1,0 +1,39 @@
+@use "componet";
+
+.login, .register .content {
+    margin: 7% 10% 0 10% !important;
+    a:hover {
+        border-bottom: 2px solid $primary;
+        opacity: 100 !important;
+    }
+}
+
+.form-control {
+    border-top: 0 !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+    border-bottom: 3px solid $primary !important;
+    color: $white !important;
+    box-shadow: none !important;
+}
+.form-control:focus {
+    outline: none !important;
+}
+
+// .login .form-group span {
+//     position: absolute;
+//     right: 23%;
+//     top: 55.5%;
+// }
+
+@media(max-width: 992px) {
+    .content {
+        margin-top: 14% !important;
+    }
+    img {
+        width: 70%;
+    }
+}
+
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";

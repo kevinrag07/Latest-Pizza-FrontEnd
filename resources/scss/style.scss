@@ -1,0 +1,156 @@
+@import "componet";
+@import "navbar";
+@import "login";
+@import "home";
+@import "cart-orders";
+@import "button";
+@import "user";
+// @import '~noty/src/noty.scss';
+// @import '~noty/src/themes/mint.scss';
+
+
+html {
+    scroll-behavior: smooth !important;
+}
+
+// Body
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    background: url('/img/bg.png');
+    // background: rgb(20, 20, 20);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-sizing: border-box !important;
+}
+
+// Background
+#bg {
+    background: rgb(7, 7, 7);
+    box-shadow: 10px 10px 20px black;
+    overflow: hidden !important;
+    // border-radius: 10px;
+}
+
+
+// All Forms
+input {
+    caret-color: $primary;
+}
+.contact .form-control {
+    border: 2px solid $primary !important;
+}
+
+.data-insert button a {
+    transition: all .3s ease-in-out;
+}
+.data-insert button:hover a {
+    color: Black;
+    text-decoration: none;
+}
+
+// Admin/View
+.Data-view{
+    button i {
+        transition: all .3s ease-in-out;
+    }
+    tbody tr td {
+        font-size: 18px;
+    }
+    .nav-tabs .nav-link {
+        border: 2px solid transparent !important;
+        border-top-left-radius: 0.25rem !important;
+        border-top-right-radius: 0.25rem !important;
+    }
+    .nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus{
+        border: 2px solid $primary !important;
+    }
+    .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+        background-color: rgb(18, 18, 18) !important;
+        color: $primary !important;
+        border-color: $primary $primary transparent !important; 
+    }
+    a {
+        cursor: pointer !important;
+    }
+}
+.Data-view tbody tr td img {
+    width: 50% !important;
+}
+@media (max-width: 768px) {
+    .Data-view tbody tr td img {
+        width: 200% !important;
+    }
+    .Data-view {
+        thead {
+            font-size: 13px !important;
+        }
+        tbody tr td {
+            font-size: 14px !important;
+        }
+    }
+}
+#preloader {
+    position: fixed ;
+    top: 0;
+    background: white url('/img/loader.gif') no-repeat center;
+    width: 100%;
+    height: 100vh;
+    z-index: 1000;
+}
+
+// cart
+@media (max-width: 768px) {
+    .cart {
+        thead {
+            font-size: 13px !important;
+        }
+        tbody tr td {
+            font-size: 14px !important;
+            img {
+                width: 200% !important;
+            } 
+        }
+        a {
+            cursor: pointer !important;
+        }
+    }
+}
+.StripeElement {
+    box-sizing: border-box;
+    width: 100%;
+    margin-left: auto;
+    margin-top: 15px;
+    height: 40px;
+    padding: 10px 12px;
+    border: 2px solid $primary !important;
+    border-radius: 4px;
+    background-color: $black;
+  }
+  .StripeElement--focus {
+    box-shadow: 0 1px 3px 0 $primary;
+  }
+  .StripeElement--invalid {
+    border-color: #fa755a;
+  }
+
+  .StripeElement--webkit-autofill {
+    background-color: #fefde5 !important;
+  }
+
+.admin-order button:hover:before {
+    width: 0% !important;
+}
+.admin-order button i {
+    transition: all .3s ease-in-out;
+}
+.admin-order button:hover {
+    box-shadow: none !important;
+    i {
+        transform: translateX(10px);
+        color: $primary;
+    }
+}
+.admin-order button:active {
+    background: black !important;
+}

@@ -1,0 +1,545 @@
+<!-- User -->
+<!-- <section class="user-icon">
+    
+</section> -->
+
+<!-- carousel Section -->
+<section class="mt-5">
+    <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <a type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active rounded-circle"
+                aria-current="true" aria-label="Slide 1"></a>
+            <a type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class="rounded-circle"
+                aria-label="Slide 2"></a>
+            <a type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" class="rounded-circle"
+                aria-label="Slide 3"></a>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/img/Slider/Burger_Slide.svg" class="w-100 img-fluid" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="/img/Slider/Pizza_Slide.svg" class="w-100 img-fluid" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="/img/Slider/Drink_Slide.svg" class="w-100 img-fluid" alt="...">
+            </div>
+        </div>
+        <a class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </a>
+        <a class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </a>
+    </div>
+</section>
+<!-- End of Carousel -->
+
+<!-- Feature Section -->
+<section class="features bg-primary p-5">
+    <div class="container">
+        <div class="head" data-aos="fade-up" data-aos-duration="400">
+            <!-- <h3 class="text-uppercase mx-auto fw-light text-center text-black border-1 border-bottom border-primary" style="width: 150px; font-size: 16px;letter-spacing: 2px;"> Features </h3> -->
+            <h1 class="fw-bold fs-2 mb-3 text-center text-black">Features</h1>
+        </div>
+        <div class="row d-flex align-items-center justify-content-center text-center p-2">
+            <div class="col-lg-4 info-box px-lg-5" data-aos="fade-up" data-aos-delay="200" data-aos-duration="700">
+                <img src="/img/order-1.svg" class="order-img w-25 pb-3 " alt="">
+                <h2 class="order-title text-uppercase fs-5 fw-bold text-black">Quality food</h2>
+                <p class="order-des text-black-75">"Sit amet, consectetur adipiscing elit quisque eget maximus velit, non eleifend libero curabitur dapibus mauris sed leo cursus aliquetcras suscipit."</p>
+            </div>
+            <div class="col-lg-4 info-box px-lg-5" data-aos="fade-up" data-aos-delay="300" data-aos-duration="700">
+                <img src="/img/order-2.svg" class="order-img w-25 pb-3" alt="">
+                <h2 class="order-title text-uppercase fs-5 fw-bold text-black">DELIVERY OR PICK UP</h2>
+                <p class="order-des text-black-75">"Sit amet, consectetur adipiscing elit quisque eget maximus velit, non eleifend libero curabitur dapibus mauris sed leo cursus aliquetcras suscipit."</p>
+            </div>
+            <div class="col-lg-4 info-box px-lg-5" data-aos="fade-up" data-aos-delay="400" data-aos-duration="700">
+                <img src="/img/order-3.svg" class="order-img w-25 pb-3" alt="">
+                <h2 class="order-title text-uppercase fs-5 fw-bold text-black">DELICIOUS RECEIPE</h2>
+                <p class="order-des text-black-75">"Sit amet, consectetur adipiscing elit quisque eget maximus velit, non eleifend libero curabitur dapibus mauris sed leo cursus aliquetcras suscipit."</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!--End of Feature Section -->
+
+<!-- Menu Section -->
+<section class="menu py-4 my-5" id="menu">
+    <div class="container">
+        <div class="head mt-5" data-aos="fade-up">
+            <h3 class="text-uppercase mx-auto mb-4 fw-bolder pb-2 fw-light text-center text-primary border-3 border-bottom rounded-pill border-primary" style="font-size: 20px;letter-spacing: 2px;"> Menu </h3>
+            <h1 class="fw-bold fs-2 my-5 mx-auto text-center text-primary border-2 border-bottom border-primary rounded-pill pb-1">Pizzas</h1>
+        </div>
+
+        <!-- Pizzas -->
+        <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="400" data-aos-duration="800">
+            <% pizzas.forEach(function(pizza) { if(pizza.category=="pizza") { %>
+                <div class="col-sm-6 p-3 items mx-lg-5 my-4 position-relative" style="margin-left: 10px; margin-right: 10px;" id="bg">
+                    <div class="pizza_info">
+                        <div class="images">
+                            <img class="img-fluid position-absolute" style="top: -12%; left: -22%; width: 68%;" src="/img/<%= pizza.image %>" alt="">
+                        </div>
+                        <div class="text-primary text-white my-4 position-relative" style="margin-left: 46%;">
+                            <h2 class="fs-3 mb-1 text-capitalize"><%= pizza.name %></h2>
+                            <span class="fw-light"><%= pizza.size %></span>
+                            <div class="d-flex mt-3 align-items-center">
+                                <span class="fst-normal" style="margin-right: 40px; font-size: 17px;">₹&nbsp<%= pizza.price %></span>
+                                <% if(user) { %>
+                                    <% if(user.role != 'admin') { %>
+                                        <button data-pizza="<%= JSON.stringify(pizza) %>" style="padding: 5px 0;" class="add-to-cart px-3 rounded-pill d-flex align-items-center fw-bolder">
+                                            <span>+</span>
+                                            <span class="ms-2">Add</span>
+                                        </button>
+                                    <% } %>
+                                <% } else { %>
+                                    <button data-pizza="<%= JSON.stringify(pizza) %>" style="padding: 5px 0;" class="add-to-cart px-3 rounded-pill d-flex align-items-center fw-bolder">
+                                        <span>+</span>
+                                        <span class="ms-2">Add</span>
+                                    </button>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }}) %>
+        </div>
+
+
+        <!-- Burgers -->
+        <h1 class="fw-bold mx-auto fs-2 my-5 text-center text-primary border-2 border-bottom border-primary rounded-pill pb-1" data-aos="fade-up">Burgers</h1>
+        <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="400">
+            <% pizzas.forEach(function(pizza) { if(pizza.category=="burgers") { %>
+                <div class="col-sm-6 p-3 items mx-lg-5 my-4 position-relative" style="margin-left: 10px; margin-right: 10px;" id="bg">
+                    <div class="pizza_info">
+                        <div class="images">
+                            <img class="img-fluid position-absolute" style="top: -34%; left: -32%; width: 90%;" src="/img/<%= pizza.image %>" alt="">
+                        </div>
+                        <div class="text-primary text-white my-4 position-relative" style="margin-left: 46%;">
+                            <h2 class="fs-3 mb-1 text-capitalize"><%= pizza.name %></h2>
+                            <!-- <span class="fw-light"><%= pizza.size %></span> -->
+                            <div class="d-flex mt-3 align-items-center">
+                                <span class="fst-normal" style="margin-right: 40px; font-size: 17px;">₹&nbsp<%= pizza.price %></span>
+                                <% if(user) { %>
+                                    <% if(user.role != 'admin') { %>
+                                        <button data-pizza="<%= JSON.stringify(pizza) %>" style="padding: 5px 0;" class="add-to-cart px-3 rounded-pill d-flex align-items-center fw-bolder">
+                                            <span>+</span>
+                                            <span class="ms-2">Add</span>
+                                        </button>
+                                    <% } %>
+                                <% } else { %>
+                                    <button data-pizza="<%= JSON.stringify(pizza) %>" style="padding: 5px 0;" class="add-to-cart px-3 rounded-pill d-flex align-items-center fw-bolder">
+                                        <span>+</span>
+                                        <span class="ms-2">Add</span>
+                                    </button>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }}) %>
+        </div>
+
+
+        <!-- Drinks -->
+        <h1 class="fw-bold mx-auto fs-2 my-5 text-center text-primary border-2 border-bottom border-primary rounded-pill pb-1" data-aos="fade-up">Drinks</h1>
+        <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="400">
+            <% pizzas.forEach(function(pizza) { if(pizza.category=="drinks") { %>
+                <div class="col-sm-6 p-3 items mx-lg-5 my-4 position-relative" style="margin-left: 10px; margin-right: 10px;" id="bg">
+                    <div class="pizza_info">
+                        <div class="images">
+                            <img class="img-fluid position-absolute" style="top: -5%; left: -8%; width: 65%; filter: contrast(100%);" src="/img/<%= pizza.image %>" alt="">
+                        </div>
+                        <div class="text-primary text-white my-4 position-relative" style="margin-left: 46%;">
+                            <h2 class="fs-3 mb-1 text-capitalize"><%= pizza.name %></h2>
+                            <span class="fw-light"><%= pizza.size %></span>
+                            <div class="d-flex mt-3 align-items-center">
+                                <span class="fst-normal" style="margin-right: 40px; font-size: 17px;">₹&nbsp<%= pizza.price %></span>
+                                <% if(user) { %>
+                                    <% if(user.role != 'admin') { %>
+                                        <button data-pizza="<%= JSON.stringify(pizza) %>" style="padding: 5px 0;" class="add-to-cart px-3 rounded-pill d-flex align-items-center fw-bolder">
+                                            <span>+</span>
+                                            <span class="ms-2">Add</span>
+                                        </button>
+                                    <% } %>
+                                <% } else { %>
+                                    <button data-pizza="<%= JSON.stringify(pizza) %>" style="padding: 5px 0;" class="add-to-cart px-3 rounded-pill d-flex align-items-center fw-bolder">
+                                        <span>+</span>
+                                        <span class="ms-2">Add</span>
+                                    </button>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }}) %>
+        </div>
+
+
+        <!-- Desserts -->
+        <h1 class="fw-bold mx-auto fs-2 my-5 text-center text-primary border-2 border-bottom border-primary rounded-pill pb-1" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">Desserts</h1>
+        <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="400">
+            <% pizzas.forEach(function(pizza) { if(pizza.category=="desserts") { %>
+                <div class="col-sm-6 p-3 items mx-lg-5 my-4 position-relative h-75" style="margin-left: 10px; margin-right: 10px;" id="bg">
+                    <div class="pizza_info">
+                        <div class="images">
+                            <img class="img-fluid position-absolute" style="top: -12%; left: -12%; width: 65%;" src="/img/<%= pizza.image %>" alt="">
+                        </div>
+                        <div class="text-primary my-4 text-white position-relative" style="margin-left: 44%;">
+                            <h2 class="fs-3 text-capitalize"><%= pizza.name %></h2>
+                            <!-- <span class="fw-light"><%= pizza.size %></span> -->
+                            <div class="d-flex mt-4 align-items-center">
+                                <span class="fst-normal" style="margin-right: 40px; font-size: 17px;">₹&nbsp<%= pizza.price %></span>
+                                <% if(user) { %>
+                                    <% if(user.role != 'admin') { %>
+                                        <button data-pizza="<%= JSON.stringify(pizza) %>" style="padding: 5px 0;" class="add-to-cart px-3 rounded-pill d-flex align-items-center fw-bolder">
+                                            <span>+</span>
+                                            <span class="ms-2">Add</span>
+                                        </button>
+                                    <% } %>
+                                <% } else { %>
+                                    <button data-pizza="<%= JSON.stringify(pizza) %>" style="padding: 5px 0;" class="add-to-cart px-3 rounded-pill d-flex align-items-center fw-bolder">
+                                        <span>+</span>
+                                        <span class="ms-2">Add</span>
+                                    </button>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }}) %>
+        </div>
+    </div>
+</section>
+<!--End of Menu Section -->
+
+<!-- Chefs Section -->
+<section class="chefs py-4 my-5">
+    <div class="container">
+        <div class="head" data-aos="fade-up">
+            <h1 class="fw-bold fs-2 mb-5 text-center text-primary">Our Proffesional Chefs</h1>
+        </div>        
+        <div class="row gy-4">
+
+            <!-- Chef 1 -->
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                <div class="member text-center mx-sm-0 mx-4 overflow-hidden rounded-3">
+                    <div class="team-img position-relative">
+                        <img src="/img/Chefs/Chef1.png" class="img-fluid w-100 h-100" style="height: 220px;" alt="">
+                        <div class="links rounded-3 position-absolute fs-5 mt-4 p-1">
+                            <a class="d-block m-2 lh-sm">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+                            <a class="d-block m-2 lh-sm">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                            <a class="d-block m-2 lh-sm">
+                                <i class="fa-brands fa-twitter"></i>
+                            </a>
+                            <a class="d-block m-2 lh-sm">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="team-info py-3 px-3 bg-white">
+                        <h4 class="fw-bold mb-1 fs-5">Amanda Jepson</h4>
+                        <span class="fw-normal">Master Chef</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chef 2 -->
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="500" data-aos-duration="900">
+                <div class="member text-center mx-sm-0 mx-4 overflow-hidden rounded-3">
+                    <div class="team-img position-relative">
+                    <img src="/img/Chefs/Chef2.jpg" class="img-fluid w-100 h-100" style="height: 220px;" alt="">
+                    <div class="links rounded-3 position-absolute fs-5 mt-4 p-1">
+                        <a class="d-block m-2 lh-sm">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a class="d-block m-2 lh-sm">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a class="d-block m-2 lh-sm">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                        <a class="d-block m-2 lh-sm">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </a>
+                    </div>
+                    </div>
+                    <div class="team-info py-3 px-3 bg-white">
+                        <h4 class="fw-bold mb-1 fs-5">Sarah Jhonson</h4>
+                        <span class="fw-normal">Master Chef</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chef 3 -->
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="600" data-aos-duration="900">
+                <div class="member text-center mx-sm-0 mx-4 overflow-hidden rounded-3">
+                    <div class="team-img position-relative">
+                    <img src="/img/Chefs/Chef3.jpg" class="img-fluid w-100 h-100" style="height: 220px;" alt="">
+                        <div class="links rounded-3 position-absolute fs-5 mt-4 p-1">
+                            <a class="d-block m-2 lh-sm">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+                            <a class="d-block m-2 lh-sm">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                            <a class="d-block m-2 lh-sm">
+                                <i class="fa-brands fa-twitter"></i>
+                            </a>
+                            <a class="d-block m-2 lh-sm">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="team-info py-3 px-3 bg-white">
+                        <h4 class="fw-bold mb-1 fs-5">William Anderson</h4>
+                        <span class="fw-normal">Master Chef</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chef 4 -->
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="700" data-aos-duration="900">
+                <div class="member text-center mx-sm-0 mx-4 overflow-hidden rounded-3">
+                    <div class="team-img position-relative">
+                    <img src="/img/Chefs/Chef4.jpg" class="img-fluid w-100 h-100" style="height: 220px;" alt="">
+                        <div class="links rounded-3 position-absolute fs-5 mt-4 p-1">
+                            <a class="d-block m-2 lh-sm">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+                            <a class="d-block m-2 lh-sm">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                            <a class="d-block m-2 lh-sm">
+                                <i class="fa-brands fa-twitter"></i>
+                            </a>
+                            <a class="d-block m-2 lh-sm">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="team-info py-3 px-3 bg-white">
+                        <h4 class="fw-bold mb-1 fs-5">Walter White</h4>
+                        <span class="fw-normal">Master Chef</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!--End of Chefs Section -->
+
+<!--  Counts Section  -->
+<section id="counts" class="counts py-4 my-5">
+    <div class="container" data-aos="fade-up" data-aos-delay="600">
+  
+        <div class="row gy-4 justify-content-center">
+            <div class="col-lg-3 col-md-6 px-sm-3 px-5">
+                <div class="count-box d-flex align-items-center p-4 w-100" id="bg">
+                    <i class="fa-solid fa-face-laugh-beam me-3" style="color: #feb326; font-size: 42px; line-height: 0;"></i>
+                    <div>
+                        <span data-purecounter-start="0" data-purecounter-end="2032" data-purecounter-duration="1" data-purecounter-delay="20" data-purecounter-once="false" class="purecounter d-block fw-bold text-primary fs-3"></span>
+                        <p class="text-white m-0 p-0 text-capitalize">Happy Customers</p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-lg-3 col-md-6 px-sm-3 px-5">
+                <div class="count-box d-flex align-items-center p-4 w-100" id="bg">
+                    <i class="fa-solid fa-bowl-food me-3" style="color: #08bb44;font-size: 42px; line-height: 0;"></i>
+                    <div>
+                        <span data-purecounter-start="0" data-purecounter-end="50" data-purecounter-duration="1" data-purecounter-delay="20" data-purecounter-once="false" class="purecounter d-block fw-bold text-primary fs-3"></span>
+                        <p class="text-white m-0 p-0 text-capitalize">variety of dishes </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 px-sm-3 px-5">
+                <div class="count-box d-flex align-items-center p-4 w-100" id="bg">
+                    <i class="bi bi-headset me-3" style="color: #4ebde9;font-size: 42px; line-height: 0;"></i>
+                    <div>
+                        <span class="d-block fw-bold text-primary fs-3">24 × 7</span>
+                        <p class="text-white m-0 p-0 text-capitalize">Service</p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-lg-3 col-md-6 px-sm-3 px-5">
+                <div class="count-box d-flex align-items-center p-4 w-100" id="bg">
+                    <i class="fa-solid fa-people-group me-3" style="color: #ee6c20;font-size: 42px; line-height: 0;"></i>
+                    <div>
+                        <span data-purecounter-start="0" data-purecounter-end="30" data-purecounter-duration="1" data-purecounter-delay="30" data-purecounter-once="false" class="purecounter d-block fw-bold text-primary fs-3"></span>
+                        <p class="text-white m-0 p-0 text-capitalize">Hard Working Employee</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- End Counts Section -->
+
+<!-- Contact Us Section -->
+<section class="contact py-4 mt-5" id="contact">
+    <div class="container aos-init aos-animate" data-aos="fade-up" data-aos-duration="600">
+        <div class="head mt-5">
+            <h1 class="fw-bold fs-2 mb-5 text-center text-primary">Contact us</h1>
+        </div>
+        <div class="row gy-4">
+
+            <!-- left side -->
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300" data-aos-duration="900">
+    
+              <div class="row gy-4">
+                <div class="col-md-6 mt-lg-3 mt-0" data-aos="zoom-in-up" data-aos-delay="400">
+                  <div class="c-box p-4">
+                    <i class="bi bi-geo-alt fs-2 text-primary"></i>
+                    <h3 class="fs-5 fw-bold text-primary mt-3 mb-2">Address</h3>
+                    <p class="fw-lighter text-white m-0">A108 Adam Street,<br>New York, NY 535022</p>
+                  </div>
+                </div>
+                <div class="col-md-6 mt-lg-3 mt-0" data-aos="zoom-in-up" data-aos-delay="500">
+                  <div class="c-box p-4">
+                    <i class="bi bi-telephone fs-2 text-primary"></i>
+                    <h3 class="fs-5 fw-bold text-primary mt-3 mb-2">Call Us</h3>
+                    <p class="fw-lighter text-white m-0">+1 5589 55488 55<br>+1 6678 254445 41</p>
+                  </div>
+                </div>
+                <div class="col-md-6 mt-lg-3 mt-0" data-aos="zoom-in-up" data-aos-delay="400">
+                  <div class="c-box p-4">
+                    <i class="bi bi-envelope fs-2 text-primary"></i>
+                    <h3 class="fs-5 fw-bold text-primary mt-3 mb-2">Email Us</h3>
+                    <p class="fw-lighter text-white m-0">hungerhub@gmail.com<br>contact@hungerhub.com</p>
+                  </div>
+                </div>
+                <div class="col-md-6 mt-lg-3 mt-0" data-aos="zoom-in-up" data-aos-delay="500">
+                  <div class="c-box p-4">
+                    <i class="bi bi-clock fs-2 text-primary"></i>
+                    <h3 class="fs-5 fw-bold text-primary mt-3 mb-2">Open Hours</h3>
+                    <p class="fw-lighter text-white m-0">Monday - Sunday<br>10:00AM - 12:00PM</p>
+                  </div>
+                </div>
+              </div>
+    
+            </div>
+            
+            <!-- right side -->
+            <div class="col-lg-6 mt-lg-3 mt-0" data-aos="fade-up" data-aos-delay="500" data-aos-duration="900">
+              <form class="p-4" autocomplete="off" action="/" method="POST">
+                <div class="row">
+                  <div class="col-md-12 mt-4">
+                    <input type="text" class="form-control d-block bg-black lh-md w-100 py-2 px-3 text-primary mb-1 text-white" placeholder="Your Name" name="fname" required="">
+                  </div>
+                  <div class="col-md-12 mt-4">
+                    <input type="text" class="form-control d-block bg-black lh-md w-100 py-2 px-3 text-primary mb-1 text-white" placeholder="Your Email" name="email" required="true">
+                  </div>
+                  <div class="col-md-12 mt-4">
+                    <textarea class="form-control d-block bg-black lh-md w-100 py-2 px-3 text-primary mb-1 text-white" name="feedback" rows="6" placeholder="Message" style="caret-color: #f7b149;" required=""></textarea>
+                  </div>
+                  <div class="col-md-12 text-center mt-4">
+                    <button type="submit" class="btn btn-secondary bg-black fw-bolder pt-2 pb-2 ps-4 pe-4">Send Feedback</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+    </div>
+</section>
+<!--End of Contact Us Section -->
+
+<!-- Map Section -->
+<div class="container-fluid p-0 m-0" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.971697730129!2d72.78099961490682!3d21.153524585930864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04df15a760c8d%3A0x202f5132f3a6aa2d!2sVeer%20Narmad%20South%20Gujarat%20University!5e0!3m2!1sen!2sin!4v1649932671749!5m2!1sen!2sin" style="width: 100%; height: 300px;" frameborder="0" allowfullscreen></iframe>
+</div>
+<!--End of Map Section -->
+
+
+<!-- Footer -->
+<footer class="bg-black position-relative bottom-0 text-center text-lg-start">
+    <!-- <div class="pizza_smb position-absolute" style="top: -14%; left: 45%;"><img src="/img/Cartoon_Pizza-removebg-preview.png" class="img-fluid" style="width: 120px; transform: rotate(15deg);" alt=""></div> -->
+    <div class="container-fluid p-4 pb-0">
+        <div class="row my-md-5 my-3 mx-md-5 justify-content-between">
+
+            <!-- Grid 1 -->
+            <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+                <h2 class="text-primary text-uppercase fs-5 fw-bold pt-2">Contact us</h2>
+                <ul class="list-unstyled fw-lighter text-white pt-3">
+                    <li class="py-2 fs-6" style="letter-spacing: 1px;"><i class="fa-solid fa-envelope text-primary fs-5"></i><a href="#" class="ps-2 text-decoration-none text-white">hungerhub@gmail.com</a></li>
+                    <li class="py-2 fs-6" style="letter-spacing: 1px;"><i class="fa-solid fa-phone text-primary fs-5"></i><a href="#" class="ps-2 text-decoration-none text-white">+555 5 555 5555</a></li>
+                </ul>
+                
+            </div>
+
+            <!-- Grid 2 -->
+            <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                <h2 class="text-primary text-uppercase fs-5 fw-bold pt-2">Opening Hours</h2>
+                <ul class="list-unstyled text-white pt-3">
+                    <li class="fw-500 py-2" style="font-size: 14px; letter-spacing: 1px;">" Mon - Fri : " <span class="ms-lg-5 ms-2">10.00 am - 12.00 pm</span></li>
+                    <li class="fw-500 py-2" style="font-size: 14px; letter-spacing: 1px;">" Sat - Sun : " <span class="ms-lg-5 ms-2">8.00 am - 12.00 pm</span></li>
+                    <li class="fw-500 py-2" style="font-size: 14px; letter-spacing: 1px;">" Lunch / Dinner : " <span class="ms-lg-5 ms-2">Everyday</span></li>
+                </ul>
+            </div>
+
+            <!-- Grid 3 -->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <div class="links">
+                    <h2 class="text-primary text-uppercase fs-5 fw-bold pt-2">Useful Links</h2>
+                    <ul class="list-unstyled text-white pt-3">
+                        <li><i class="bi bi-chevron-right text-primary me-1"></i><a href="#" class="text-white text-decoration-none">Terms & Conditions</a></li>
+                        <li><i class="bi bi-chevron-right text-primary me-1"></i><a href="#" class="text-white text-decoration-none">Refund & Cancellation Policy</a></li>
+                        <li><i class="bi bi-chevron-right text-primary me-1"></i><a href="#" class="text-white text-decoration-none">Privacy Policy</a></li>
+                        <li><i class="bi bi-chevron-right text-primary me-1"></i><a href="#" class="text-white text-decoration-none">Cookie Policy</a></li>
+                        <li><i class="bi bi-chevron-right text-primary me-1"></i><a href="#" class="text-white text-decoration-none">Offer Terms</a></li>
+                      </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="copyright border-1 border-top border-primary">
+            <div class="row mx-lg-5 align-items-center">
+
+                <!-- Grid 1 -->
+                <div class="col-lg-8 col-md-7 py-3 ps-4">
+                    <p class="text-white m-0 float-start" style="font-size: 14px;">© Copyright <span class="text-primary text-uppercase"> HUNGER HUB </span>All Rights Reserved. Designed by <a href="#" class="text-decoration-none ms-1">Kevin Vaghani</a></p>
+                </div>
+
+                <!-- Grid-2 -->
+                <div class="col-lg-4 col-md-5 py-3 d-flex justify-content-center">
+                    <div class="social">
+                        <ul class="list-unstyled d-flex mb-0">
+                            <li class="border border-2 border-primary rounded-3 h-100 px-3 py-2 mx-2">
+                                <div class="icn text-primary fs-5">
+                                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                                </div>
+                            </li>
+                            <li class="border border-2 border-primary rounded-3 h-100 px-3 py-2 mx-2">
+                                <div class="icn text-primary fs-5">
+                                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                                </div>
+                            </li>
+                            <li class="border border-2 border-primary rounded-3 h-100 px-3 py-2 mx-2">
+                                <div class="icn text-primary fs-5">
+                                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                                </div>
+                            </li>
+                            <li class="border border-2 border-primary rounded-3 h-100 px-3 py-2 mx-2">
+                                <div class="icn text-primary fs-5">
+                                    <a href="#"><i class="fa-brands fa-google"></i></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</footer>
+<!--End of Footer -->

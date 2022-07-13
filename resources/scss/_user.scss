@@ -1,0 +1,10 @@
+@use "componet";
+
+.user-profile .content {
+    margin: 7% 10% 0 10% !important;
+    a:hover {
+        text-decoration: none !important;
+    }
+}
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";

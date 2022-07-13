@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/img/favicon.svg">
+    <title>Hunger HUB</title>
+    <!-- <title>Mamma's Pizzerio</title> -->
+
+    <!-- Google Fonts -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Piazzolla:wght@200;300;400;900&family=Raleway:wght@100&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;400;700&display=swap" rel="stylesheet">
+
+    <!-- Line Awesone -->
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    
+    <!-- Css -->
+    <link rel="stylesheet" href="/css/style.css">
+    <a href="https://storyset.com/user"></a>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+
+    <!-- aos -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+</head>
+
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-black">
+        <div class="container-fluid px-md-5 px-0">
+            <a href="/"><img src="/img/logo.svg" alt="Logo" class="img-fluid logo"></a>
+
+            <div class="small ms-auto d-flex">
+                <button class="navbar-toggler" style="margin-right: 40px;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <% if(user) { %>
+                <% if(user.role != 'admin') { %>
+                    <ul>
+                        <!-- <li class="nav-item justify-content-end d-flex me-md-3 me-0 position-absolute cart-icon">
+                            <button class="d-inline-block text-primary fw-bold rounded-pill ms-lg-4 ms-auto mt-md-0 mt-2 text-uppercase" style="font-size: 13px; letter-spacing: 1px;"><a class="d-flex nav-link px-3 py-1" href="/cart">
+                                <span id="cartCounter" class="text-white fw-bold pe-2 fs-6"><%= session.cart ? session.cart.totalQty : '' %></span>
+                                <img src="/img/cart.png" class="img-fluid" alt="cart"></a>
+                            </button> 
+                        </li> -->
+                        <li class="nav-item justify-content-end d-flex me-md-3 me-0 position-absolute user">
+                            <a class="nav-link ms-lg-4 mt-lg-0 text-uppercase" style="font-size: 13px;" aria-current="page" href="/user/<%= user._id %>">
+                                <script src="https://cdn.lordicon.com/lusqsztk.js"></script>
+                                <lord-icon
+                                    src="https://cdn.lordicon.com/elkhjhci.json"
+                                    trigger="hover"
+                                    colors="primary:#f7b149"
+                                    style="width:40px;height:40px">
+                                </lord-icon>
+                            </a>
+                        </li>
+                    </ul>
+                <% }} %>
+    
+            </div>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center justify-content-center me-lg-5 me-0">
+                    <li class="nav-item">
+                        <a class="nav-link ms-lg-4 ms-auto mt-lg-0 mt-3 text-uppercase" style="font-size: 13px; letter-spacing: 1px;" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ms-lg-4 ms-auto mt-lg-0 mt-3 text-uppercase" style="font-size: 13px; letter-spacing: 1px;" aria-current="page" href="/#menu">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ms-lg-4 ms-auto mt-lg-0 mt-3 text-uppercase" style="font-size: 13px; letter-spacing: 1px;" aria-current="page" href="/#contact">Contact</a>
+                    </li>
+                    <% if(user) { %>
+
+                        <% if(user.role != 'admin') { %>
+                            <li class="nav-item">
+                                <a class="nav-link ms-lg-4 ms-auto mt-lg-0 mt-3 text-uppercase" style="font-size: 13px; letter-spacing: 1px;" aria-current="page" href="/customer/orders">Orders</a>
+                            </li>
+                            <% } else { %>
+                                <li class="nav-item">
+                                    <a class="nav-link ms-lg-4 ms-auto mt-lg-0 mt-3 text-uppercase" style="font-size: 13px; letter-spacing: 1px;" aria-current="page" href="/admin/orders">Orders</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link ms-lg-4 ms-auto mt-lg-0 mt-3 text-uppercase" style="font-size: 13px; letter-spacing: 1px;" aria-current="page" href="/admin/data">Data</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link ms-lg-4 ms-auto mt-lg-0 mt-3 text-uppercase" style="font-size: 13px; letter-spacing: 1px;" aria-current="page" href="/admin/view">View</a>
+                                </li>
+                            <% } %>
+                            <li class="nav-item">
+                                <form id="logout" action="/logout" method="POST">
+                                    <a onclick="document.getElementById('logout').submit()" href="#" class="nav-link ms-lg-4 ms-auto mt-lg-0 mt-3 text-uppercase" style="font-size: 13px; letter-spacing: 1px;">Logout</a>
+                                </form>
+                            </li>                            
+                        <% if(user.role != 'admin') { %>
+                            <li class="nav-item">
+                                <button class="d-inline-block text-primary fw-bold rounded-pill ms-lg-4 ms-auto mt-lg-0 mt-3 text-uppercase" style="font-size: 13px; letter-spacing: 1px;"><a class="d-flex nav-link px-3 py-1" href="/cart">
+                                    <span id="cartCounter" class="text-white fw-bold pe-2 fs-6"><%= session.cart ? session.cart.totalQty : '' %></span>
+                                    <img src="/img/cart.png" class="img-fluid" alt="cart"></a>
+                                </button> 
+                            </li>
+                        <% } %>
+
+                    <% } else { %>
+                        <li class="nav-item"><a href="/register" class="nav-link ms-lg-4 ms-auto mt-lg-0 mt-3 text-uppercase" style="font-size: 13px; letter-spacing: 1px;">Register</a></li>
+                        <li class="nav-item"><a href="/login" class="nav-link ms-lg-4 ms-auto mt-lg-0 mt-3 text-uppercase" style="font-size: 13px; letter-spacing: 1px;">Login</a></li>
+                        <li class="nav-item">
+                            <button class="d-inline-block text-primary fw-bold rounded-pill ms-lg-4 ms-auto mt-lg-0 text-uppercase mt-3" style="font-size: 13px; letter-spacing: 1px;"><a class="d-flex nav-link px-3 py-1" href="/cart">
+                                <span id="cartCounter" class="text-white fw-bold pe-2 fs-6"><%= session.cart ? session.cart.totalQty : '' %></span>
+                                <img src="/img/cart.png" class="img-fluid" alt="cart"></a>
+                            </button>
+                        </li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+            
+    </nav>
+
+    <%- body %>
+
+
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendors/aos/aos.js"></script>
+    <script src="/vendors/purecounter/purecounter.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.29.2/dist/sweetalert2.all.min.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+
+</body>
+
+</html>

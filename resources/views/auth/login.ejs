@@ -1,0 +1,57 @@
+<!-- Login -->
+<section class="login pt-4">
+    <div class="container">
+        <div class="row content w-75 px-md-5 px-0 py-4 mx-auto" id="bg">
+            <div class="col-lg-6 mb-3 d-flex justify-content-center">
+                <img src="/img/Animated_Svg/login_animation.svg" class="img-fluid" alt="img">
+            </div>
+            <div class="col-lg-6 align-self-center">
+                <h3 class="mb-3 fw-bold text-primary text-md-start text-center">Sign In</h3>
+                <form action="/login" method="POST" autocomplete="off">
+                    <% if(messages.error) { %>
+                        <span class="text-danger"><%= messages.error %></span>
+                    <% } %>
+                    <div class="form-group">
+                        <label for="email" class="d-block text-primary fw-bold mb-1" for="username">Email</label>
+                        <input type="email" name="email" class="form-control d-inline-block bg-black lh-md w-100 py-2 px-3 text-primary mb-1 text-white" id="username" placeholder="Enter Your Email">
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="password" class="d-block text-primary fw-bold mb-1">Password</label>
+                        <div class="input-group flex-nowrap">
+                            <input type="password" name="password" class="form-control d-block bg-black lh-md w-100 py-2 px-3 text-primary mb-1 text-white" id="password" placeholder="***************">
+                            <span class="input-group-text bg-black border-0 border-3 mb-1 border-bottom border-primary" style="cursor: pointer;" id="addon-wrapping">
+                                <i class="fa fa-eye fs-5" id="eye" onclick=" toggle() "></i>
+                            </span>
+                        </div>
+                        
+                        
+                    </div>
+                    <div class="row d-flex mt-4">
+                        <div class="col-md-5">
+                            <button class="btn w-100 text-primary fw-bold">Log In</button>
+                        </div>
+                        <div class="col-md-7 pt-2">
+                            <a href="/register" class="text-primary text-decoration-none opacity-75" style="font-size: 14px;">Don't have account?</a>   
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    var state = false;
+    function toggle() {
+        if(state) {
+            document.getElementById("password").setAttribute("type","password");
+            document.getElementById("eye").style.color = 'red';
+            state = false;
+        }
+        else {
+            document.getElementById("password").setAttribute("type","text");
+            document.getElementById("eye").style.color = 'green';
+            state = true;
+        }
+    }
+</script>

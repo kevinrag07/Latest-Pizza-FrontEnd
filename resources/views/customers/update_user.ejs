@@ -1,0 +1,63 @@
+<!-- User Profile -->
+<section class="user-profile my-5">
+    <div class="container">
+        <form action="/user/update" method="POST">
+            <input type="hidden" name="_id" value="<%= `${user._id}` %>">
+            <div class="content text-primary w-75 px-md-5 px-2 py-5" style="margin-top: 100px !important;" id="bg">
+                <div class="head d-flex w-100 justify-content-center border-1 border-bottom border-primary rounded-3 px-md-5 px-1 py-lg-2 pb-0">
+                    <h2 class="fw-bold" style="letter-spacing: 1px;">Updat Your Profile</h2>
+                    <!-- <a href="/user/update" class="text-decoration-none">
+                        <script src="https://cdn.lordicon.com/lusqsztk.js"></script>
+                        <lord-icon
+                            src="https://cdn.lordicon.com/diyeocup.json"
+                            trigger="hover"
+                            colors="primary:#f7b149"
+                            style="width:50px;height:50px">
+                        </lord-icon>
+                    </a> -->
+                </div>
+                <div class="row p-2">
+                    <div class="col-lg-6 col-12 justify-content-center d-flex">
+                        <div class="profile-img w-100"><img src="/img/User.svg" class="img-fluid w-100" alt=""></div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="row">
+                            <div class="col-12 pt-4">
+                                <div class="form-group">
+                                    <label class="d-block text-primary mb-1 fs-5 fw-bold">Name</label>
+                                    <input type="text" name="name" class="form-control d-block bg-black lh-md py-2 px-3 text-primary mb-1 text-white w-100" value="<%= user.name %>">
+                                </div>
+                            </div>
+                            <div class="col-12 pt-4">
+                                <div class="form-group">
+                                    <label class="d-block text-primary mb-1 fs-5 fw-bold">Email ID</label>
+                                    <input type="text" name="email" class="form-control d-block bg-black lh-md py-2 px-3 text-primary mb-1 text-white w-100" value="<%= user.email %>">
+                                </div>
+                            </div>
+                            <div class="col-12 pt-4">
+                                <div class="form-group">
+                                    <label class="d-block text-primary mb-1 fs-5 fw-bold">Phone No.</label>
+                                    <input type="text" name="phone" class="form-control d-block bg-black lh-md py-2 px-3 text-primary mb-1 text-white w-100" value="<%= user.phone %>">
+                                </div>
+                            </div>
+                            <div class="col-12 pt-4">
+                                <div class="form-group">
+                                    <label class="d-block text-primary mb-1 fs-5 fw-bold">Address</label>
+                                    <textarea type="text" name="address" class="form-control d-block bg-black lh-md py-2 px-3 text-primary mb-1 text-white w-100"><%= user.address %></textarea>
+                                </div>
+                            </div>
+                            <div class="row d-flex mt-3">
+                                <div class="col-md-5 mx-auto">
+                                    <button class="btn w-100 text-primary fw-bold" type="submit" value="submit">Update</button>
+                                </div>
+                                <div class="col-md-5 mx-auto mt-sm-0 mt-2">
+                                    <button class="btn w-100 text-primary fw-bold" type="reset" onclick="window.location.href = '/';">Cancle</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

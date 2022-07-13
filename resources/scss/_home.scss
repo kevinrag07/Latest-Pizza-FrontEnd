@@ -1,0 +1,153 @@
+@use "componet";
+
+$carousel-indicator-width: 10px;
+$carousel-indicator-height: 10px;
+$carousel-indicator-opacity: 0.5;
+$carousel-indicator-spacer: 5px;
+$carousel-indicator-active-bg: $primary;
+$carousel-control-width: 8%;
+$carousel-control-hover-opacity: 1;
+
+.carousel img {
+    height: calc(100vh - 48px) !important;
+    object-fit: cover;
+}
+@media(max-width:992px) {
+    .carousel img{
+        height: auto !important;
+    }
+}
+
+
+// Features
+.features .order-img {
+    transition: all .4s ease;
+}
+.features .info-box:hover .order-img {
+    filter: invert(1);
+}
+@media(max-width:992px) {
+    .features img {
+        width: 18% !important;
+    }
+}
+
+
+.menu {
+    h1 {
+        width: 20%;
+    }
+    .head h1 {
+        width: 20%;
+    }
+    .items {
+        width: 340px !important;
+        height: 200px;
+        transition: all .3s ease-in-out;
+        &:hover {
+            transform: scale(1.1,1.1);
+        }
+    }
+} 
+
+@media(max-width:768px) {
+    .menu {
+        h1 {
+            width: 40%;
+        }
+        .head h1 {
+            width: 40%;
+        }
+    }
+}
+
+
+.counts .count-box:nth-child(2) span:after {
+    content: "+";
+    width: 50px;
+    height: 50px;
+    color: aqua;
+}
+
+
+// Chefs
+.chefs .Chef-info .card img {
+    transition: all .3s ease-in-out;
+}
+.chefs .Chef-info .card:hover img {
+    transform: scale(1.2,1.2);
+}
+.chefs{
+    .member{
+        transition: all 0.3s ease-in-out;
+        .links{
+            z-index: 2;
+            top: 0;
+            right: -100%;
+            background: rgba($color: black, $alpha: 0.8);
+            opacity: 0;
+            transition: 0.5s;
+            a{
+                transition: color 0.3s;
+                cursor: pointer;
+                color: rgba(247, 177, 73, 0.7);
+            }
+            a:hover{
+                color: $primary !important;
+            }
+        }
+    } 
+    .member:hover .links{
+        opacity: 1;
+        right: 8px;
+    }
+    .member:hover{
+        transform: scale(1.1);
+    }
+    .team-img::after{
+        position: absolute;
+        content: "";
+        left: 0;
+        bottom: -10px;
+        height: 100%;
+        width: 100%;
+        background: url(/img/team-shape.svg) no-repeat center bottom;
+        background-size: contain;
+        z-index: 1;
+    }
+}
+
+
+// Footer
+footer .links ul li a{
+    transition: all .3s ease-in-out;
+    &:hover {
+        color: $primary !important;
+    }
+}
+.copyright p a:hover {
+    color: $primary;
+    border-bottom: 1px solid $primary;
+}
+.social ul li i {
+    transition: all .6s ease-in-out;
+}
+.social ul:first-child li:hover i {
+    transform: rotate(360deg);
+}
+.social ul li {
+    transition: all .8s ease-in-out;
+}
+.social ul:first-child li:hover {
+    background: $primary !important;
+    // border: 2px solid black !important;
+    cursor: pointer;
+    .icn a{
+        color: black !important;
+    }
+}
+
+
+
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";

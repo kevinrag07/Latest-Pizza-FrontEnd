@@ -1,0 +1,306 @@
+<!-- Data View -->
+<section class="Data-view light-section">
+    <div class="container pt-5 mt-5 text-center">
+        <nav>
+            <div class="nav nav-tabs justify-content-center mt-4 border-1 border-bottom border-primary" id="nav-tab" role="tablist">
+                <a style="letter-spacing: 1px; font-size: 16px;" class="nav-link fw-bold px-md-4 p-1 mx-sm-1 mx-0 active" id="nav-pizzas-tab" data-bs-toggle="tab" data-bs-target="#nav-pizzas" type="button" role="tab" aria-controls="nav-pizzas" aria-selected="true">Pizzas</a>
+                <a style="letter-spacing: 1px; font-size: 16px;" class="nav-link fw-bold px-md-4 p-1 mx-sm-1 mx-0" id="nav-burgers-tab" data-bs-toggle="tab" data-bs-target="#nav-burgers" type="button" role="tab" aria-controls="nav-burgers" aria-selected="false"> Burgers</a>
+                <a style="letter-spacing: 1px; font-size: 16px;" class="nav-link fw-bold px-md-4 p-1 mx-sm-1 mx-0" id="nav-Drinks-tab" data-bs-toggle="tab" data-bs-target="#nav-Drinks" type="button" role="tab" aria-controls="nav-Drinks" aria-selected="false">Drinks</a>
+                <a style="letter-spacing: 1px; font-size: 16px;" class="nav-link fw-bold px-md-4 p-1 mx-sm-1 mx-0" id="nav-Desserts-tab" data-bs-toggle="tab" data-bs-target="#nav-Desserts" type="button" role="tab" aria-controls="nav-Desserts" aria-selected="false">Desserts</a>
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+
+            <!-- 1st -->
+            <div class="tab-pane fade show active" id="nav-pizzas" role="tabpanel" aria-labelledby="nav-pizzas-tab">
+                <div class="table-responsive mt-5">
+                    <table class="text-white text-center bg-black">
+                        <thead class="text-black bg-primary">
+                            <tr>
+                                <th class="text-center border-2 border-dark p-sm-2 px-4 py-2">Image</th>
+                                <th class="text-center border-2 border-dark p-sm-2 px-4 py-2 w-25">Product Name</th>
+                                <th class="text-center border-2 border-dark p-sm-2 px-4 py-2">Category</th>
+                                <th class="text-center border-2 border-dark p-sm-2 px-4 py-2">Price</th>
+                                <th class="text-center border-2 border-dark p-sm-2 px-4 py-2">Update</th>
+                                <th class="text-center border-2 border-dark p-sm-2 px-4 py-2">Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% pizzas.forEach(function(pizza) { if(pizza.category=="pizza") { %>
+                                <tr>
+                                    <td class="text-center border-bottom border-primary w-25">
+                                        <img src="/img/<%= pizza.image %>" class="img-fluid pb-sm-3 pb-1" alt="image not found">
+                                    </td>
+                                    <td class="text-center border-bottom border-primary text-white">
+                                        <%= pizza.name %>
+                                    </td>
+                                    <td class="text-center border-bottom border-primary text-capitalize text-white">
+                                        <%= pizza.category %>
+                                    </td>
+                                    <td class="text-center border-bottom border-primary text-white">
+                                        ₹&nbsp<%= pizza.price %>
+                                    </td>
+                                    <td class="text-center border-bottom border-primary" style="width: 5%;">
+                                        <a class="ms-2 text-dark py-1 px-2" href="/admin/update/<%= pizza._id %> %>">                                            
+                                            <i class="las la-edit text-primary" style="font-size: 30px;" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                    <td class="text-center border-bottom border-primary" style="width: 5%;">
+                                        <a class="ms-2 text-dark py-1 px-2" href="/admin/view/delete/<%= pizza._id %>" onclick="confirm('Are u sure to Delete this record ??? ')">                                            
+                                            <script src="https://cdn.lordicon.com/lusqsztk.js"></script>
+                                            <lord-icon
+                                                src="https://cdn.lordicon.com/dovoajyj.json"
+                                                trigger="hover"
+                                                colors="primary:#f7b149"
+                                                style="width:32px;height:32px">
+                                            </lord-icon>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <% }}) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 2nd -->
+            <div class="tab-pane fade" id="nav-burgers" role="tabpanel" aria-labelledby="nav-burgers-tab">
+                <div class="table-responsive mt-5">
+                    <table class="text-white text-center bg-black">
+                        <thead class="text-black bg-primary">
+                            <tr>
+                                <th class="text-center border-2 border-dark p-sm-2 px-4 py-2">Image</th>
+                                <th class="text-center border-2 border-dark p-sm-2 px-4 py-2 w-25">Product Name</th>
+                                <th class="text-center border-2 border-dark p-sm-2 px-4 py-2">Category</th>
+                                <th class="text-center border-2 border-dark p-sm-2 px-4 py-2">Price</th>
+                                <th class="text-center border-2 border-dark p-sm-2 px-4 py-2">Update</th>
+                                <th class="text-center border-2 border-dark p-sm-2 px-4 py-2">Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% pizzas.forEach(function(pizza) { if(pizza.category=="burgers") { %>
+                                <tr>
+                                    <td class="text-center border-bottom border-primary w-25">
+                                        <img src="/img/<%= pizza.image %>" class="img-fluid" alt="image not found">
+                                    </td>
+                                    <td class="text-center border-bottom border-primary text-white">
+                                        <%= pizza.name %>
+                                    </td>
+                                    <td class="text-center border-bottom border-primary text-capitalize text-white">
+                                        <%= pizza.category %>
+                                    </td>
+                                    <td class="text-center border-bottom border-primary text-white">
+                                        ₹&nbsp<%= pizza.price %>
+                                    </td>
+                                    <td class="text-center border-bottom border-primary" style="width: 5%;">
+                                        <a class="ms-2 text-dark py-1 px-2" href="/admin/update/<%= pizza._id %> %>">                                            
+                                            <i class="las la-edit text-primary" style="font-size: 30px;" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                    <td class="text-center border-bottom border-primary" style="width: 5%;">
+                                        <a class="ms-2 text-dark py-1 px-2" href="/admin/view/delete/<%= pizza._id %>" onclick="confirm('Are u sure to Delete this record ??? ')">                                            
+                                            <script src="https://cdn.lordicon.com/lusqsztk.js"></script>
+                                            <lord-icon
+                                                src="https://cdn.lordicon.com/dovoajyj.json"
+                                                trigger="hover"
+                                                colors="primary:#f7b149"
+                                                style="width:32px;height:32px">
+                                            </lord-icon>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <% }}) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 3rd -->
+            <div class="tab-pane fade" id="nav-Drinks" role="tabpanel" aria-labelledby="nav-Drinks-tab">
+                <div class="table-responsive mt-5">
+                    <table class="text-white text-center bg-black">
+                        <thead class="text-black bg-primary">
+                            <tr>
+                                <th class="text-center border-2 border-dark p-sm-2 px-4 py-2">Image</th>
+                                <th class="text-center border-2 border-dark p-sm-2 px-4 py-2 w-25">Product Name</th>
+                                <th class="text-center border-2 border-dark p-sm-2 px-4 py-2">Category</th>
+                                <th class="text-center border-2 border-dark p-sm-2 px-4 py-2">Price</th>
+                                <th class="text-center border-2 border-dark p-sm-2 px-4 py-2">Update</th>
+                                <th class="text-center border-2 border-dark p-sm-2 px-4 py-2">Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% pizzas.forEach(function(pizza) { if(pizza.category=="drinks") { %>
+                                <tr>
+                                    <td class="text-center border-bottom border-primary w-25">
+                                        <img src="/img/<%= pizza.image %>" class="img-fluid" alt="image not found">
+                                    </td>
+                                    <td class="text-center border-bottom border-primary text-white">
+                                        <%= pizza.name %>
+                                    </td>
+                                    <td class="text-center border-bottom border-primary text-capitalize text-white">
+                                        <%= pizza.category %>
+                                    </td>
+                                    <td class="text-center border-bottom border-primary text-white">
+                                        ₹&nbsp<%= pizza.price %>
+                                    </td>
+                                    <td class="text-center border-bottom border-primary" style="width: 5%;">
+                                        <a class="ms-2 text-dark py-1 px-2" href="/admin/update/<%= pizza._id %> %>">                                            
+                                            <i class="las la-edit text-primary" style="font-size: 30px;" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                    <td class="text-center border-bottom border-primary" style="width: 5%;">
+                                        <a class="ms-2 text-dark py-1 px-2" href="/admin/view/delete/<%= pizza._id %>" onclick="confirm('Are u sure to Delete this record ??? ')">                                            
+                                            <script src="https://cdn.lordicon.com/lusqsztk.js"></script>
+                                            <lord-icon
+                                                src="https://cdn.lordicon.com/dovoajyj.json"
+                                                trigger="hover"
+                                                colors="primary:#f7b149"
+                                                style="width:32px;height:32px">
+                                            </lord-icon>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <% }}) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 4th -->
+            <div class="tab-pane fade" id="nav-Desserts" role="tabpanel" aria-labelledby="nav-Desserts-tab">
+                <div class="table-responsive mt-5">
+                    <table class="text-white text-center bg-black">
+                        <thead class="text-black bg-primary">
+                            <tr>
+                                <th class="text-center border-2 border-dark p-sm-2 px-4 py-2">Image</th>
+                                <th class="text-center border-2 border-dark p-sm-2 px-4 py-2 w-25">Product Name</th>
+                                <th class="text-center border-2 border-dark p-sm-2 px-4 py-2">Category</th>
+                                <th class="text-center border-2 border-dark p-sm-2 px-4 py-2">Price</th>
+                                <th class="text-center border-2 border-dark p-sm-2 px-4 py-2">Update</th>
+                                <th class="text-center border-2 border-dark p-sm-2 px-4 py-2">Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% pizzas.forEach(function(pizza) { if(pizza.category=="desserts") { %>
+                                <tr>
+                                    <td class="text-center border-bottom border-primary w-25">
+                                        <img src="/img/<%= pizza.image %>" class="img-fluid" alt="image not found">
+                                    </td>
+                                    <td class="text-center border-bottom border-primary text-white">
+                                        <%= pizza.name %>
+                                    </td>
+                                    <td class="text-center border-bottom border-primary text-capitalize text-white">
+                                        <%= pizza.category %>
+                                    </td>
+                                    <td class="text-center border-bottom border-primary text-white">
+                                        ₹&nbsp<%= pizza.price %>
+                                    </td>
+                                    <td class="text-center border-bottom border-primary" style="width: 5%;">
+                                        <a class="ms-2 text-dark py-1 px-2" href="/admin/update/<%= pizza._id %> %>">                                            
+                                            <i class="las la-edit text-primary" style="font-size: 30px;" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                    <td class="text-center border-bottom border-primary" style="width: 5%;">
+                                        <a class="ms-2 text-dark py-1 px-2" href="/admin/view/delete/<%= pizza._id %>" onclick="confirm('Are u sure to Delete this record ??? ')">                                            
+                                            <script src="https://cdn.lordicon.com/lusqsztk.js"></script>
+                                            <lord-icon
+                                                src="https://cdn.lordicon.com/dovoajyj.json"
+                                                trigger="hover"
+                                                colors="primary:#f7b149"
+                                                style="width:32px;height:32px">
+                                            </lord-icon>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <% }}) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-black position-relative bottom-0 text-center text-lg-start" style="margin-top: 300px;">
+    <!-- <div class="pizza_smb position-absolute" style="top: -14%; left: 45%;"><img src="/img/Cartoon_Pizza-removebg-preview.png" class="img-fluid" style="width: 120px; transform: rotate(15deg);" alt=""></div> -->
+    <div class="container-fluid p-4 pb-0">
+        <div class="row my-md-5 my-3 mx-md-5 justify-content-between">
+
+            <!-- Grid 1 -->
+            <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+                <h2 class="text-primary text-uppercase fs-5 fw-bold pt-2">Contact us</h2>
+                <ul class="list-unstyled fw-lighter text-white pt-3">
+                    <li class="py-2 fs-6" style="letter-spacing: 1px;"><i class="fa-solid fa-envelope text-primary fs-5"></i><a href="#" class="ps-2 text-decoration-none text-white">hungerhub@gmail.com</a></li>
+                    <li class="py-2 fs-6" style="letter-spacing: 1px;"><i class="fa-solid fa-phone text-primary fs-5"></i><a href="#" class="ps-2 text-decoration-none text-white">+555 5 555 5555</a></li>
+                </ul>
+                
+            </div>
+
+            <!-- Grid 2 -->
+            <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                <h2 class="text-primary text-uppercase fs-5 fw-bold pt-2">Opening Hours</h2>
+                <ul class="list-unstyled text-white pt-3">
+                    <li class="fw-500 py-2" style="font-size: 14px; letter-spacing: 1px;">" Mon - Fri : " <span class="ms-lg-5 ms-2">10.00 am - 12.00 pm</span></li>
+                    <li class="fw-500 py-2" style="font-size: 14px; letter-spacing: 1px;">" Sat - Sun : " <span class="ms-lg-5 ms-2">8.00 am - 12.00 pm</span></li>
+                    <li class="fw-500 py-2" style="font-size: 14px; letter-spacing: 1px;">" Lunch / Dinner : " <span class="ms-lg-5 ms-2">Everyday</span></li>
+                </ul>
+            </div>
+
+            <!-- Grid 3 -->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <div class="links">
+                    <h2 class="text-primary text-uppercase fs-5 fw-bold pt-2">Useful Links</h2>
+                    <ul class="list-unstyled text-white pt-3">
+                        <li><i class="bi bi-chevron-right text-primary me-1"></i><a href="#" class="text-white text-decoration-none">Terms & Conditions</a></li>
+                        <li><i class="bi bi-chevron-right text-primary me-1"></i><a href="#" class="text-white text-decoration-none">Refund & Cancellation Policy</a></li>
+                        <li><i class="bi bi-chevron-right text-primary me-1"></i><a href="#" class="text-white text-decoration-none">Privacy Policy</a></li>
+                        <li><i class="bi bi-chevron-right text-primary me-1"></i><a href="#" class="text-white text-decoration-none">Cookie Policy</a></li>
+                        <li><i class="bi bi-chevron-right text-primary me-1"></i><a href="#" class="text-white text-decoration-none">Offer Terms</a></li>
+                      </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="copyright border-1 border-top border-primary">
+            <div class="row mx-lg-5 align-items-center">
+
+                <!-- Grid 1 -->
+                <div class="col-lg-8 col-md-7 py-3 ps-4">
+                    <p class="text-white m-0 float-start" style="font-size: 14px;">© Copyright <span class="text-primary text-uppercase"> HUNGER HUB </span>All Rights Reserved. Designed by <a href="#" class="text-decoration-none ms-1">Kevin Vaghani</a></p>
+                </div>
+
+                <!-- Grid-2 -->
+                <div class="col-lg-4 col-md-5 py-3 d-flex justify-content-center">
+                    <div class="social">
+                        <ul class="list-unstyled d-flex mb-0">
+                            <li class="border border-2 border-primary rounded-3 h-100 px-3 py-2 mx-2">
+                                <div class="icn text-primary fs-5">
+                                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                                </div>
+                            </li>
+                            <li class="border border-2 border-primary rounded-3 h-100 px-3 py-2 mx-2">
+                                <div class="icn text-primary fs-5">
+                                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                                </div>
+                            </li>
+                            <li class="border border-2 border-primary rounded-3 h-100 px-3 py-2 mx-2">
+                                <div class="icn text-primary fs-5">
+                                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                                </div>
+                            </li>
+                            <li class="border border-2 border-primary rounded-3 h-100 px-3 py-2 mx-2">
+                                <div class="icn text-primary fs-5">
+                                    <a href="#"><i class="fa-brands fa-google"></i></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</footer>

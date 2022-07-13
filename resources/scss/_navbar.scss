@@ -1,0 +1,46 @@
+@use "componet";
+
+nav li:last-child a{
+    background: none !important;
+}
+.nav-link{
+    color: $white !important;
+    &:hover{
+        color: $primary !important;
+    }
+}
+.nav-link:active {
+    color: $primary !important;
+}
+
+.navbar-toggler {
+    box-shadow: none !important;
+}
+
+.logo:hover {
+    filter: drop-shadow(0 0 1px $primary)
+}
+// @media(max-width: 992px) {
+//     .navbar .navbar-nav button:nth-last-child(1) a {
+//         padding-left: 35px !important;
+//         padding-right: 35px !important;
+//     }
+// }
+
+.navbar .small {
+    .user {
+        top: 2px;
+        right: 0;
+    }
+}
+
+@media(max-width: 992px) {
+    .navbar .small {
+        .user {
+            top: 2px;
+            right: -2px;
+        }
+    }
+}
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";

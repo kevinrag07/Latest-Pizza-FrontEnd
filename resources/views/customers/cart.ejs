@@ -1,0 +1,199 @@
+<!-- Cart -->
+<section class="cart py-4 my-5">
+        <% if(session.cart) { %>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 d-flex align-items-center justify-content-center border-2 rounded-pill border-bottom border-primary">
+                        <img src="/img/cart.png" class="img-fluid w-auto" alt="">
+                        <h1 class="text-primary ms-3 mt-1 fs-3">Order Summary</h1>
+                    </div>
+
+                    <!-- Cart_Data  -->
+                    <div class="col-12">
+                        <div class="table-responsive mt-5">
+                            <table class="text-white text-center bg-black">
+                                <thead class="text-black bg-primary">
+                                    <tr>
+                                        <th class="text-center border-2 border-dark p-sm-2 p-0 py-2 px-1" style="width: 25%;">Image</th>
+                                        <th class="text-center border-2 border-dark p-sm-2 p-0 py-2 px-1" style="width: 30%;">Product Name</th>
+                                        <th class="text-center border-2 border-dark p-sm-2 p-0 py-2 px-1" style="width: 28%;">Quantity</th>
+                                        <th class="text-center border-2 border-dark p-sm-2 p-0 py-2 px-1" style="width: 17%;">Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="fs-4">
+                                    <% for(let pizza of Object.values(session.cart.items)) { if(pizza.qty != 0) { %>
+                                        <tr>
+                                            <td class="text-center border-bottom border-primary w-25">
+                                                <img src="/img/<%= pizza.item.image %>" class="img-fluid w-75 pb-3" alt="image not found">
+                                            </td>
+                                            <td class="text-center border-bottom border-primary text-white">
+                                                <%= pizza.item.name %> 
+                                                <br>
+                                                <% if(pizza.item.category == "pizza") { %>
+                                                    <span class="fs-6"><%= pizza.item.size %></span>
+                                                <% } %>
+                                            </td>
+                                            <td class="text-center border-bottom border-primary text-capitalize text-white">
+                                                <div class="content d-flex justify-content-sm-center justify-content-between mx-1 mt-0">
+                                                <a class="text-decoration-none me-sm-3" href="/cart/delete/<%= pizza.item._id %>">                                            
+                                                    <i class="fa fa-minus-circle text-primary fs-4"></i>
+                                                </a>
+                                                <%= pizza.qty %> Pcs
+                                                <a class="text-decoration-none ms-sm-3" href="/cart/plus/<%= pizza.item._id %>">                                            
+                                                    <i class="fa fa-plus-circle text-primary fs-4"></i>
+                                                </a>
+                                            </div>
+                                            </td>
+                                            <td class="text-center border-bottom border-primary text-primary fw-bold">
+                                                ₹&nbsp<%= pizza.item.price * pizza.qty %>
+                                            </td>
+                                        </tr>
+                                    <% }} %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment  -->
+                <div class="order text-white mt-4">
+                    <div class="row mx-lg-5 mx-0 p-1">
+                        <div class="col-12 d-flex align-items-center justify-content-end">
+                            <span class="fs-4 fw-bold text-white">Total Amount : </span>
+                            <span class="amount ms-2 fs-5 fw-bold text-primary">₹<%= session.cart.totalPrice %></span>
+                        </div>
+                        <% if(user) { %>
+                            <div class="col-12 d-flex align-items-center justify-content-end mt-4">
+                                <form action="/orders" method="POST" class="mt-2" id="payment-form" autocomplete="off">
+                                    <div class="ms-auto position-relative mb-4">
+                                        <select id="paymentType" name="paymentType" class="d-block bg-black text-white rounded-3 border-1 border-primary px-2 py-2" style="width: 320px;">
+                                            <option value="cod">Cash on delivery</option>
+                                            <option value="card">Pay with card</option>
+                                        </select>
+                                    </div>
+                                    <input type="text" class="form-control bg-black p-2 mt-3 text-white w-100 h-50 rounded-3" style="border: 1px solid #f7b149 !important;" name="phone" id="" value="<%= user.phone %>" placeholder="Phone Number">
+                                    <input type="text" class="form-control bg-black p-2 mt-3 text-white w-100 h-50 rounded-3" style="border: 1px solid #f7b149 !important;" name="address" id="" value="<%= user.address %>" placeholder="Address">
+                                    <div>
+                                        <div id="card-element"></div>
+                                        <div class="mt-4 d-flex justify-content-end">
+                                            <button type="submit" class="w-50 px-2 py-2 rounded-pill text-primary fw-bold bg-black">Order Now</button>
+                                        </div>
+                                        <!-- <button type="submit" onclick="window.location.href = '/customer/orders';" class="mt-3 px-5 rounded-pill text-primary fw-bold bg-black">Order Now</button> -->
+                                    </div>
+                                </form>
+                            </div>
+                        <% } else { %>
+                            <div class="col-12 d-flex align-items-center justify-content-end">
+                                <button onclick="window.location.href = '/login';" class="px-5 py-2 bg-black fw-bold rounded-pill text-primary font-bold mt-3">Login to continue</button>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+            <% } else { %>
+
+                <!-- Empty_Cart  -->
+                <div class="empty-cart">
+                <div class="container text-center">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1 class="fw-bold mb-2 text-primary fs-2">Cart Empty 😕</h1>
+                                <p class="text-white fs-6 mb-0 text-capitalize" style="letter-spacing: 1px;">You probably haven't ordered a Food yet. <br> To order food, go to the main page.</p>
+                            </div>
+                            <div class="col-md-12">
+                                <img class="img-fluid" style="width: 550px;" src="/img/Animated_Svg/add-to-cart.svg" alt="">
+                            </div>
+                            <div class="col-md-12">
+                                <button  onclick="window.location.href = '/#menu';" class="btn text-primary bg-black fw-bold px-4">Explore Menu</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+</section>
+
+
+<!-- Footer -->
+<footer class="bg-black position-relative bottom-0 text-center text-lg-start" style="margin-top: 200px;">
+    <!-- <div class="pizza_smb position-absolute" style="top: -14%; left: 45%;"><img src="/img/Cartoon_Pizza-removebg-preview.png" class="img-fluid" style="width: 120px; transform: rotate(15deg);" alt=""></div> -->
+    <div class="container-fluid p-4 pb-0">
+        <div class="row my-md-5 my-3 mx-md-5 justify-content-between">
+
+            <!-- Grid 1 -->
+            <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+                <h2 class="text-primary text-uppercase fs-5 fw-bold pt-2">Contact us</h2>
+                <ul class="list-unstyled fw-lighter text-white pt-3">
+                    <li class="py-2 fs-6" style="letter-spacing: 1px;"><i class="fa-solid fa-envelope text-primary fs-5"></i><a href="#" class="ps-2 text-decoration-none text-white">hungerhub@gmail.com</a></li>
+                    <!-- <li class="py-2 fs-6" style="letter-spacing: 1px;"><i class="fa-solid fa-envelope text-primary fs-5"></i><a href="#" class="ps-2 text-decoration-none text-white">Mamma'sPizzerio@gmail.com</a></li> -->
+                    <li class="py-2 fs-6" style="letter-spacing: 1px;"><i class="fa-solid fa-phone text-primary fs-5"></i><a href="#" class="ps-2 text-decoration-none text-white">+555 5 555 5555</a></li>
+                </ul>
+                
+            </div>
+
+            <!-- Grid 2 -->
+            <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                <h2 class="text-primary text-uppercase fs-5 fw-bold pt-2">Opening Hours</h2>
+                <ul class="list-unstyled text-white pt-3">
+                    <li class="fw-500 py-2" style="font-size: 14px; letter-spacing: 1px;">" Mon - Fri : " <span class="ms-lg-5 ms-2">10.00 am - 12.00 pm</span></li>
+                    <li class="fw-500 py-2" style="font-size: 14px; letter-spacing: 1px;">" Sat - Sun : " <span class="ms-lg-5 ms-2">8.00 am - 12.00 pm</span></li>
+                    <li class="fw-500 py-2" style="font-size: 14px; letter-spacing: 1px;">" Lunch / Dinner : " <span class="ms-lg-5 ms-2">Everyday</span></li>
+                </ul>
+            </div>
+
+            <!-- Grid 3 -->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <div class="links">
+                    <h2 class="text-primary text-uppercase fs-5 fw-bold pt-2">Useful Links</h2>
+                    <ul class="list-unstyled text-white pt-3">
+                        <li><i class="bi bi-chevron-right text-primary me-1"></i><a href="#" class="text-white text-decoration-none">Terms & Conditions</a></li>
+                        <li><i class="bi bi-chevron-right text-primary me-1"></i><a href="#" class="text-white text-decoration-none">Refund & Cancellation Policy</a></li>
+                        <li><i class="bi bi-chevron-right text-primary me-1"></i><a href="#" class="text-white text-decoration-none">Privacy Policy</a></li>
+                        <li><i class="bi bi-chevron-right text-primary me-1"></i><a href="#" class="text-white text-decoration-none">Cookie Policy</a></li>
+                        <li><i class="bi bi-chevron-right text-primary me-1"></i><a href="#" class="text-white text-decoration-none">Offer Terms</a></li>
+                      </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="copyright border-1 border-top border-primary">
+            <div class="row mx-lg-5 align-items-center">
+
+                <!-- Grid 1 -->
+                <div class="col-lg-8 col-md-7 py-3 ps-4">
+                    <p class="text-white m-0 float-start" style="font-size: 14px;">© Copyright <span class="text-primary text-uppercase"> HUNGER HUB </span>All Rights Reserved. Designed by <a href="#" class="text-decoration-none ms-1">Kevin Vaghani</a></p>
+                    <!-- <p class="text-white m-0 float-start" style="font-size: 14px;">© Copyright <span class="text-primary text-uppercase"> Mamma's Pizzerio </span>All Rights Reserved. Designed by <a href="#" class="text-decoration-none ms-1">ABC devloper</a></p> -->
+                </div>
+
+                <!-- Grid-2 -->
+                <div class="col-lg-4 col-md-5 py-3 d-flex justify-content-center">
+                    <div class="social">
+                        <ul class="list-unstyled d-flex mb-0">
+                            <li class="border border-2 border-primary rounded-3 h-100 px-3 py-2 mx-2">
+                                <div class="icn text-primary fs-5">
+                                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                                </div>
+                            </li>
+                            <li class="border border-2 border-primary rounded-3 h-100 px-3 py-2 mx-2">
+                                <div class="icn text-primary fs-5">
+                                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                                </div>
+                            </li>
+                            <li class="border border-2 border-primary rounded-3 h-100 px-3 py-2 mx-2">
+                                <div class="icn text-primary fs-5">
+                                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                                </div>
+                            </li>
+                            <li class="border border-2 border-primary rounded-3 h-100 px-3 py-2 mx-2">
+                                <div class="icn text-primary fs-5">
+                                    <a href="#"><i class="fa-brands fa-google"></i></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</footer>

@@ -1,0 +1,109 @@
+<!-- Status -->
+<section class="status my-5 py-4">
+    <div class="container">
+        <div class="row">
+            <div class="status-box pt-4">
+                <div class="d-flex align-items-center justify-content-between mb-lg-5 mb-3 border-bottom border-2 border-primary rounded-pill px-lg-5 px-1">
+                    <div class="d-flex align-items-center">
+                        <img src="/img/Track.svg" class="img-fluid pb-1" style="width: 42px;" alt="">
+                        <h1 class="fs-5 text-white ms-lg-2 ms-1 mb-1">Track delivery status</h1>
+                    </div>
+                    <h6 class="text-primary mb-0"><%= order._id %></h6>
+                    <input id="hiddenInput" type="hidden" value="<%= JSON.stringify(order) %>">
+                </div>
+                <ul class="fs-5 ps-md-5 ps-0">
+                    <li class="status-line list-unstyled text-white mb-4" data-status="order_placed"><span class="ps-md-4 ps-3">Order Placed</span></li>
+                    <li class="status-line list-unstyled text-white mb-4" data-status="confirmed"><span class="ps-md-4 ps-3">Order Confirmation</span></li>
+                    <li class="status-line list-unstyled text-white mb-4" data-status="prepared"><span class="ps-md-4 ps-3">Preparation</span></li>
+                    <li class="status-line list-unstyled text-white mb-4" data-status="delivered"><span class="ps-md-4 ps-3">Out for Delivery</span></li>
+                    <li class="status-line list-unstyled text-white mb-4 " data-status="completed"><span class="ps-md-4 ps-3">Complete</span></li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+
+<!-- Footer -->
+<footer class="bg-black position-relative bottom-0 text-center text-lg-start" style="margin-top: 280px;">
+    <!-- <div class="pizza_smb position-absolute" style="top: -14%; left: 45%;"><img src="/img/Cartoon_Pizza-removebg-preview.png" class="img-fluid" style="width: 120px; transform: rotate(15deg);" alt=""></div> -->
+    <div class="container-fluid p-4 pb-0">
+        <div class="row my-md-5 my-3 mx-md-5 justify-content-between">
+
+            <!-- Grid 1 -->
+            <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+                <h2 class="text-primary text-uppercase fs-5 fw-bold pt-2">Contact us</h2>
+                <ul class="list-unstyled fw-lighter text-white pt-3">
+                    <li class="py-2 fs-6" style="letter-spacing: 1px;"><i class="fa-solid fa-envelope text-primary fs-5"></i><a href="#" class="ps-2 text-decoration-none text-white">hungerhub@gmail.com</a></li>
+                    <li class="py-2 fs-6" style="letter-spacing: 1px;"><i class="fa-solid fa-phone text-primary fs-5"></i><a href="#" class="ps-2 text-decoration-none text-white">+555 5 555 5555</a></li>
+                </ul>
+                
+            </div>
+
+            <!-- Grid 2 -->
+            <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                <h2 class="text-primary text-uppercase fs-5 fw-bold pt-2">Opening Hours</h2>
+                <ul class="list-unstyled text-white pt-3">
+                    <li class="fw-500 py-2" style="font-size: 14px; letter-spacing: 1px;">" Mon - Fri : " <span class="ms-lg-5 ms-2">10.00 am - 12.00 pm</span></li>
+                    <li class="fw-500 py-2" style="font-size: 14px; letter-spacing: 1px;">" Sat - Sun : " <span class="ms-lg-5 ms-2">8.00 am - 12.00 pm</span></li>
+                    <li class="fw-500 py-2" style="font-size: 14px; letter-spacing: 1px;">" Lunch / Dinner : " <span class="ms-lg-5 ms-2">Everyday</span></li>
+                </ul>
+            </div>
+
+            <!-- Grid 3 -->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <div class="links">
+                    <h2 class="text-primary text-uppercase fs-5 fw-bold pt-2">Useful Links</h2>
+                    <ul class="list-unstyled text-white pt-3">
+                        <li><i class="bi bi-chevron-right text-primary me-1"></i><a href="#" class="text-white text-decoration-none">Terms & Conditions</a></li>
+                        <li><i class="bi bi-chevron-right text-primary me-1"></i><a href="#" class="text-white text-decoration-none">Refund & Cancellation Policy</a></li>
+                        <li><i class="bi bi-chevron-right text-primary me-1"></i><a href="#" class="text-white text-decoration-none">Privacy Policy</a></li>
+                        <li><i class="bi bi-chevron-right text-primary me-1"></i><a href="#" class="text-white text-decoration-none">Cookie Policy</a></li>
+                        <li><i class="bi bi-chevron-right text-primary me-1"></i><a href="#" class="text-white text-decoration-none">Offer Terms</a></li>
+                      </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="copyright border-1 border-top border-primary">
+            <div class="row mx-lg-5 align-items-center">
+
+                <!-- Grid 1 -->
+                <div class="col-lg-8 col-md-7 py-3 ps-4">
+                    <p class="text-white m-0 float-start" style="font-size: 14px;">© Copyright <span class="text-primary text-uppercase"> HUNGER HUB </span>All Rights Reserved. Designed by <a href="#" class="text-decoration-none ms-1">Kevin Vaghani</a></p>
+                </div>
+
+                <!-- Grid-2 -->
+                <div class="col-lg-4 col-md-5 py-3 d-flex justify-content-center">
+                    <div class="social">
+                        <ul class="list-unstyled d-flex mb-0">
+                            <li class="border border-2 border-primary rounded-3 h-100 px-3 py-2 mx-2">
+                                <div class="icn text-primary fs-5">
+                                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                                </div>
+                            </li>
+                            <li class="border border-2 border-primary rounded-3 h-100 px-3 py-2 mx-2">
+                                <div class="icn text-primary fs-5">
+                                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                                </div>
+                            </li>
+                            <li class="border border-2 border-primary rounded-3 h-100 px-3 py-2 mx-2">
+                                <div class="icn text-primary fs-5">
+                                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                                </div>
+                            </li>
+                            <li class="border border-2 border-primary rounded-3 h-100 px-3 py-2 mx-2">
+                                <div class="icn text-primary fs-5">
+                                    <a href="#"><i class="fa-brands fa-google"></i></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</footer>
